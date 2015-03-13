@@ -2,7 +2,7 @@
 # Jave Code Style
 
 ##Introduction
-此文件參考兩份文件撰寫而成，主要參考 [Google Jave Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html) 。
+此文件主要參考 [Google Jave Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html) 。
 
 本文件目的為統一編程風格，避免零亂的程式風格，同時將 Check Style 裡面的檢查項目條列以供參考，方便閱便以及調整。
 
@@ -10,22 +10,28 @@ Google 說他們的 Code Style document 是一個 hard and fast rule，我們要
 
 ## Souce Code File
 ### 檔案名稱
-Google 文件說每個文件名稱都必須是 `.java` 結尾，廢話。
+Google 文件說每個文件名稱都必須是 `.java` 結尾。
+
 ### 檔案編碼
-大家都是同道中人，把 Eclipse 編碼設成 *UTF-8* 不過份吧？
+編碼設成 *UTF-8* 不過份吧？
+
 ### 檔案大小
 最大檔案大小不可以超過 3MB
+
 ### 特殊字元
 #### 舉足輕重的空白字元
 之所以空白字元重要，可以看一下[空白之神的故事](https://chrome.google.com/webstore/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd)，關於空白字元有很多注意的事項，我們在這裡只提一下 Trailing space，每一行結尾都不要有空白字元 。附贈，[哪一天被空白給婊了都不知道](http://www.codinghorror.com/blog/2009/11/whitespace-the-silent-killer.html) 。
+
 ```Java 
 //Good
 LG.log("Hi");
 ```
+
 ```Java 
 //Bad, 根本就一樣啊，好啦，用 '．' 代表空格
 LG.log("Hi");．
 ```
+
 #### 空白之外的特殊字元
 關於回車`\r`,`\t` 這類的字元比較少用到，這裡就不多加約束，但請自愛。
 
@@ -39,13 +45,14 @@ LG.log("Hi");．
  - Class 本體
  
 每個部分請用 **一行空白**來區隔。
+
 ####版權宣告
 目前有兩種選擇
 ```
 option1:
     //這種應該會有修正，因為公司搬家
 	/**
-	 * Copyright (c) 2000-${year} eBizprise, Inc. 5th Floor, 105, Sec.2,
+	 * Copyright (c) 2000-${year} xxxxxx. 
 	 * Tun-Hwa South Road, Taipei, Taiwan, R.O.C. All Rights Reserved.
 	 */
 ```
@@ -53,12 +60,13 @@ option1:
 option2: 
     //這種好，公司搬家也不怕
 	/**
-	 * Copyright (c) eBizprise, Inc All Rights Reserved.
+	 * Copyright (c) xxxxx, Inc All Rights Reserved.
 	 */ 
 ```
 
 #### Package 宣告
 Package 宣告是不受單行字數限制，即便他一千個字元，也是合法，不要把他斷掉了
+
 ```Java 
 // Good
 package com.ebizprise.cp.logger.util;
@@ -71,7 +79,8 @@ package com.ebizprise.
 ```
 
 #### import 宣告
-永遠都不要使用萬用字元 import，更不要耍帥用 `static import`
+永遠都不要使用萬用字元 import，盡可能不使用 `static import`
+
 ```Java 
 // Good
 import org.apache.commons.logging.Log;
@@ -101,18 +110,17 @@ import org.apache.commons.logging.LogFactory;
 
  - Class 目的以及特殊注意事項
  - Author 作者
- - Version 版本號碼
 
 Class 目的裡面可透過`html syntax` 來說明，特殊注意使用事項，可以在這邊多加描敘，在這裡永遠都是寫越多越好，越詳細越好。
 
 作者的部分，主要標注出這個 Class 的作者，在這裡我有點意見，如果可以透過 `SVN Blame`之類的機制知道Class 被誰改過這個標準似乎意義就降低了，同時如果此Class被多人改過，作者標很多個就會變成名人堂性質，實質意義下降。
 
-Version 是版本號碼，這部分也是，因為看起來人類的習慣是不會去改 version，所以我眼前的版本號都是 1.0，但目前的是不省略的
-
 
 ### Class 本體
+
 #### Class 成員變量
 Class 的成員變量也是有順序和群聚性的，這裡似乎沒有一個標準作法告訴我們應該怎麼做，但原則上就是邏輯類似的變量放在一起。
+
 #### Overloaded 以及 constructor
 如果你的多個 function 是 overloaded 的，請你行行好把他們聚集在一起，避免別人(或是你) 下次在找 function 的時候把他們滑鼠的滾輪給滾壞了。
 
@@ -120,17 +128,20 @@ Class 的成員變量也是有順序和群聚性的，這裡似乎沒有一個�
 #### 關於括號
 ##### 在可以選擇要不要用括號的地方，我們都用括號
 這個標題就說明了一切。
+
 ``` Java
 // Good
 if (isTrue) {
     System.out.println("Hi");
 }
 ```
+
 ``` Java
 // Bad
 if (isTrue)
     System.out.println("Hi");
 ```
+
 ##### 在可以選擇要不要用括號的地方，我們都用括號
 我們採用[埃及式開關括號法](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)，規則如下：
 
@@ -169,10 +180,12 @@ else{
 ```
 ##### 空的 block 該怎麼處理？
 有時候無可避免的我們會出現空 block 的狀況，在這裡我們就讓開關括號同一行
+
 ```
 //Good
 void hello(){}
 ```
+
 ```
 //Bad
 void hello() {
